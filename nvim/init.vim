@@ -1,3 +1,4 @@
+set t_Co=256
 set autoread  "Reload if the file is modified
 set background=dark
 set backspace=indent,eol,start  "To delete these with BS key
