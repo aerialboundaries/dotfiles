@@ -1,0 +1,13 @@
+# CONKY CIRCLES DARK BLUE -- La-manoue
+#
+## Prerequisite
+# You need to have both conky and lua installed on your system
+#
+### Installation 
+# extract the zip, put the lua script in "~/conky" folder and
+# the ".conkyrc" (hidden file) file in your home "~/"
+
+### Autostart
+# To get conky associated with user's session's startup (GNOME's settings),
+# copy and paste conky.desktop to ~/.config/autostart/conky.desktop 
+

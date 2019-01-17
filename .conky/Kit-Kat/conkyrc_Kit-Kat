@@ -1,0 +1,51 @@
+background no
+update_interval 0.5
+total_run_times 0
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+imlib_cache_size 0
+
+own_window yes
+own_window_class Conky
+own_window_type desktop
+own_window_transparent yes
+own_window_argb_visual no
+own_window_argb_value 0
+own_window_colour 000000
+own_window_hints undecorated,below,skip_taskbar,skip_pager
+
+draw_shades no
+draw_outline no
+draw_borders no
+border_width 1
+draw_graph_borders no
+default_outline_color cacaca
+default_color ffffff
+
+minimum_size 180 180
+maximum_width 200
+alignment top_right
+gap_x 20
+gap_y 50
+
+use_xft yes
+override_utf8_locale yes
+xftfont URW Chancery L:style=Bold:size=10
+xftalpha 1
+uppercase no
+
+default_outline_color cacaca
+default_color ffffff
+
+lua_load ~/.conky/Kit-Kat/scripts/lua/main.lua
+lua_draw_hook_post conky_main
+lua_draw_hook_pre conky_clock_rings
+
+TEXT
+${voffset 70}${offset 45}${color bb6600}${font URW Gothic L:size=30}${time %H:%M}
+${voffset -28}${offset 60}${color bb6600}${font URW Chancery L:size=12}${time %a, %d %b}
+
+
