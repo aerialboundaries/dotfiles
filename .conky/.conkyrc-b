@@ -1,0 +1,98 @@
+alignment bottom_right
+gap_x 0
+gap_y 0
+
+double_buffer yes
+background yes
+
+default_color white
+default_outline_color white
+default_shade_color gray
+
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+use_xft yes
+xftfont Ricty:style=Regular:size=12
+
+override_utf8_locale yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+update_interval 1.0
+uppercase no
+
+show_graph_scale yes
+show_graph_range no
+
+own_window yes
+own_window_class Conky
+own_window_type normal
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_transparent no
+own_window_colour black
+own_window_argb_visual yes
+own_window_argb_value 0
+
+cpu_avg_samples 4
+
+TEXT
+$hr
+$nodename
+$sysname $kernel $machine
+$hr
+Uptime: $uptime
+Load average: $loadavg
+Processes: $processes Running: $running_processes
+CPU Frequency: ${freq_g}GHz
+CPU Temperture: ${acpitemp} Celsius
+CPU Usage: ${cpu cpu0}%
+            ${cpugraph cpu0 -l}
+RAM Usage: $mem/$memmax
+            $membar
+#Swap Usage: $swap/$swapmax
+#            $swapbar
+$hr
+File systems:
+/ ${fs_used /}/${fs_size /}
+			${fs_bar 6 /}
+			${diskiograph}
+${if_existing /proc/net/route enp0s21f0u2}$hr
+Networking:
+ enp0s21f0u2
+ Up: ${upspeed enp0s21f0u2} - Down: ${downspeed enp0s21f0u2}
+ ${upspeedgraph enp0s21f0u2 32,140} ${downspeedgraph enp0s21f0u2 32,140}
+Local IP:  ${addr wlx503eaa7ae12f}
+Global IP: ${texeci 600 curl ifconfig.me}
+${texeci 600 curl ifconfig.me/host}
+${endif}
+${if_existing /proc/net/route wlx503eaa7ae12f}$hr
+Wireless:
+ ${wireless_essid wlx503eaa7ae12f} - ${wireless_bitrate wlx503eaa7ae12f}
+        ${wireless_link_qual_perc wlx503eaa7ae12f}% ${wireless_link_bar wlx503eaa7ae12f}
+ Up: ${upspeed wlx503eaa7ae12f} - Down: ${downspeed wlx503eaa7ae12f}
+ ${upspeedgraph wlx503eaa7ae12f 32,140} ${downspeedgraph wlx503eaa7ae12f 32,140}
+Local IP:  ${addr wlx503eaa7ae12f}
+Global IP: ${texeci 600 curl ifconfig.me}
+${texeci 600 curl ifconfig.me/host}
+		${endif}
+${if_existing /sys/class/power_supply/BAT0/status}$hr
+Battery:
+ ${battery}
+ ${battery_time} ${battery_bar}
+${endif}
+$hr
+Top:
+ Name               PID   CPU%   MEM%
+ ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+ ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+ ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+ ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+#${if_running rhythmbox}$hr
+#NowPlaying:
+# ${exec rhythmbox-client --print-playing --print-playing-format='%at - %aa'}
+#  ${exec rhythmbox-client --print-playing --print-playing-format='%tn:%tt %te/%td'}
+#  ${endif}
