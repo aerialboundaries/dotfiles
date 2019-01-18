@@ -140,3 +140,4 @@ stty stop undef
 
 # Path masato
 PATH=$PATH:${HOME}/bin/scripts
+eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
