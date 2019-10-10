@@ -4,8 +4,13 @@ if [ -f /etc/profile ]; then
 fi
 
 # export USER=k0xxxxx
+# export HOME depending on cygwin or gitbash
+if [ -d /cygdrive/c/home ]; then
+    export HOME=/cygdrive/c/home
+else
+    export HOME=/c/home
+fi
 export SHELL=/bin/bash
-export HOME=/cygdrive/c/home
 export TMPDIR=/tmp
 export TZ=America/Mexico_City
 export MAKE_MODE=unix
@@ -17,13 +22,13 @@ export LC_ALL=en_US.UTF-8
 PATH=./:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:$PATH
 PATH=$PATH:$HOME/bin
 export PATH
-EDITOR=Emacs
+EDITOR=VIM
 export EDITOR
 
 NEWENV=profile
 export NEWENV
 
-PS1="\[\e[1;31m\]\w/\[\e[00m\]$ "  
+PS1="\[\e[1;33m\]\w/\[\e[00m\]$ "  
 
 if [ -n ${DISPLAY} ]; then
     export DISPLAY=localhost:0.0
@@ -33,6 +38,15 @@ if [ ! -n "${TERM}" ]; then
     TERM=cygwin
 fi
 
+# sync history between each bash
+function share_history {
+  history -a
+  history -c
+  history -r
+}
+PROMPT_COMMAND='share_history'
+
+shopt -u histappend
 alias la="ls -aF"
 alias ll="ls -l"
 alias ls="ls -CF --color=auto"
