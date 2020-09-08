@@ -110,3 +110,4 @@ set noswapfile
 let loaded_matchparen = 1
 set clipboard+=unnamed
 set cursorline
+
