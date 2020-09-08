@@ -40,6 +40,18 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# 出力の後に改行を入れる
+function add_line {
+  if [[ -z "${PS1_NEWLINE_LOGIN}" ]]; then
+    PS1_NEWLINE_LOGIN=true
+  else
+    printf '\n'
+  fi
+}
+PROMPT_COMMAND='add_line'
+
+export PS1='\h:\W \u\$ '
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -53,7 +65,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+# force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -67,7 +79,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# vs code ではBoldが正しく色反映されないのでボールドを外す
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;33m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -134,10 +148,19 @@ alias cp="cp -vip"
 alias mv="mv -vi"
 alias rm="rm -vi"
 alias vi="nvim"
+alias python="python3"
 
 # Config by masato
 stty stop undef
 
 # Path masato
 PATH=$PATH:${HOME}/bin/scripts
+# source ~/etc/mintty-colors-solarized/sol.dark
 eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
+
+#Python setting
+#alias python='~/python_scripts/py37/bin/python3.7'
+#source ~/python_scripts/py37/bin/activate
+
+# VcXsrv setting
+export DISPLAY=:0.0
