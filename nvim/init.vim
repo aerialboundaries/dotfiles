@@ -33,17 +33,17 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tyru/caw.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'altercation/vim-colors-solarized'  "solarized
-Plug 'tomasr/molokai'  "molokai
+" Plug 'altercation/vim-colors-solarized'  "solarized
+" Plug 'tomasr/molokai'  "molokai
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 call plug#end()
 
 "Solarized color scheme setting
-colorscheme solarized
+" colorscheme solarized
 
 "Molokai color scheme setting
-"colorscheme molokai
+" colorscheme molokai
 
 "Transparent background
 highlight Normal ctermbg=none

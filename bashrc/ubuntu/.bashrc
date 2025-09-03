@@ -148,6 +148,7 @@ alias cp="cp -vip"
 alias mv="mv -vi"
 alias rm="rm -vi"
 alias vi="nvim"
+alias vim="nvim"
 alias python="python3"
 
 # Config by masato
@@ -156,7 +157,7 @@ stty stop undef
 # Path masato
 PATH=$PATH:${HOME}/bin/scripts
 # source ~/etc/mintty-colors-solarized/sol.dark
-eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
+# eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
 
 #Python setting
 #alias python='~/python_scripts/py37/bin/python3.7'
