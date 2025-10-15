@@ -225,5 +225,4 @@ eval "$(zoxide init bash)"
 # fzf (自動で設定された)
 # ------------------------
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-alias zi="zoxide query --list | fzf"
 
