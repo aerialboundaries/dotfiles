@@ -154,6 +154,8 @@ alias python="python3"
 # Config by masato
 stty stop undef
 
+# Path masato
+PATH=$PATH:${HOME}/bin/scripts
 # source ~/etc/mintty-colors-solarized/sol.dark
 eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
 
@@ -170,6 +172,12 @@ export DISPLAY=:0.0
 # 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 # fi
 
+# 実行ごとに履歴に追記
+export PROMPT_COMMAND='history -a'
+# 複数セッションでも履歴を共有
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+
 # -----------------------------
 # pyenv 設定
 # -----------------------------
@@ -182,6 +190,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"        # 非ログインシェル用
 fi
  
+
+# neovim
+export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
 # -----------------------------
 # PostgreSQL 16 設定
@@ -209,3 +220,10 @@ alias pglogs='sudo journalctl -u postgresql -f'
 # zoxide
 # ------------------------
 eval "$(zoxide init bash)"
+
+# ------------------------
+# fzf (自動で設定された)
+# ------------------------
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+alias zi="zoxide query --list | fzf"
+
