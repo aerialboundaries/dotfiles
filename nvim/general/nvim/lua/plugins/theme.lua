@@ -16,11 +16,6 @@ return {
 		config = function(_, opts)
 			require("solarized").setup(opts)
 			vim.cmd("colorscheme solarized")
-
-			-- My config
-			---- コメントの色を明るい灰色（#93a1a1）に上書き
-			vim.api.nvim_set_hl(0, "Comment", { fg = "#839496" })
-			-- ここまでMy config
 		end,
 	},
 
