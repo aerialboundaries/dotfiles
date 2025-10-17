@@ -154,6 +154,8 @@ alias python="python3"
 # Config by masato
 stty stop undef
 
+# Path masato
+PATH=$PATH:${HOME}/bin/scripts
 # source ~/etc/mintty-colors-solarized/sol.dark
 eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
 
@@ -170,20 +172,6 @@ export DISPLAY=:0.0
 # 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 # fi
 
-<<<<<<< HEAD
-# 実行ごとに履歴に追記
-export PROMPT_COMMAND='history -a'
-# 複数セッションでも履歴を共有
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-
-# pyenv設定
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-=======
 # -----------------------------
 # pyenv 設定
 # -----------------------------
@@ -219,8 +207,3 @@ alias pgstop='sudo service postgresql stop'
 alias pgstatus='sudo service postgresql status'
 alias pglogs='sudo journalctl -u postgresql -f'
 
-# ------------------------
-# zoxide
-# ------------------------
-eval "$(zoxide init bash)"
->>>>>>> 6d6c6637d19923d86fc76f05280506fc374deebf

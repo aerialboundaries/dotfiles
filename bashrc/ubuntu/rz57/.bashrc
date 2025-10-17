@@ -81,7 +81,7 @@ fi
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 # vs code ではBoldが正しく色反映されないのでボールドを外す
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;33m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;33m\]\u@\h\[\033[00m\]:\[\033[0;36m\]\w\[\033[00m\]\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -154,9 +154,9 @@ alias python="python3"
 # Config by masato
 stty stop undef
 
+# Path masato
 # source ~/etc/mintty-colors-solarized/sol.dark
-eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
-
+# eval `dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark`
 
 # VcXsrv setting
 export DISPLAY=:0.0
@@ -169,58 +169,23 @@ export DISPLAY=:0.0
 # if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 # 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 # fi
+# 
 
-<<<<<<< HEAD
 # 実行ごとに履歴に追記
 export PROMPT_COMMAND='history -a'
 # 複数セッションでも履歴を共有
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 
-# pyenv設定
+
+# pyenv 環境変数
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+# pyenv 初期化
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-=======
-# -----------------------------
-# pyenv 設定
-# -----------------------------
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# neovim
+export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 
-# pyenv を bash で有効化
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"   # ログインシェル用
-    eval "$(pyenv init -)"        # 非ログインシェル用
-fi
- 
-
-# -----------------------------
-# PostgreSQL 16 設定
-# -----------------------------
-export PG_VERSION=16
-export PATH="/usr/lib/postgresql/$PG_VERSION/bin:$PATH"
-
-# デフォルト接続設定
-export PGUSER=masato
-export PGDATABASE=scmex
-export PGPORT=5432
-export PGHOST=localhost
-export PGPASSWORD='scmex123'
-
-# -----------------------------
-# PostgreSQL 便利エイリアス
-# -----------------------------
-alias psql16='psql -U $PGUSER -d $PGDATABASE -h $PGHOST -p $PGPORT'
-alias pgstart='sudo service postgresql start'
-alias pgstop='sudo service postgresql stop'
-alias pgstatus='sudo service postgresql status'
-alias pglogs='sudo journalctl -u postgresql -f'
-
-# ------------------------
-# zoxide
-# ------------------------
-eval "$(zoxide init bash)"
->>>>>>> 6d6c6637d19923d86fc76f05280506fc374deebf
