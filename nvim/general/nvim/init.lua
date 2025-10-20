@@ -11,5 +11,3 @@ require("config.autocmds")
 -- 📦 lazy.nvim 初期化
 -- ===========================
 require("config.lazy")
-
-

@@ -26,3 +26,5 @@ vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live
 
 -- Vim/Neovim のヘルプタグ検索
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
+
+-- ========================================================
