@@ -12,3 +12,5 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 4
 vim.opt.clipboard = "unnamedplus"
 
+-- myconfig
+vim.opt.spell = true
