@@ -25,5 +25,8 @@ return {
 				stopAtEntry = true,
 			},
 		}
+		-- ✨ C言語のデバッグを有効にする設定を追加！
+		-- C言語のデバッグもC++と同じ設定を使うように指示します。
+		dap.configurations.c = dap.configurations.cpp
 	end,
 }
