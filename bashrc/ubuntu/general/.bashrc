@@ -209,23 +209,3 @@ eval "$(zoxide init bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ----------------------------------------------------
-# tmuxのペイン間でカレントディレクトリを自動同期する設定
-# ----------------------------------------------------
-
-# zshや他のシェルでも使えるように、POSIX準拠でCWD (Current Working Directory)を更新する
-update_tmux_cwd() {
-  # tmuxが動作している場合のみ実行
-  if [ -n "$TMUX" ]; then
-    # 現在のペインのカレントディレクトリを変数に格納
-    local pane_cwd=$(tmux display-message -p -F "#{pane_current_path}")
-
-    # 他のペインに移動コマンドを送信
-    # 'target-pane:!#' は現在のウィンドウの他のすべてのペインを指す
-    # 'cd ' + パス で他のペインのディレクトリも変更させる
-    tmux send-keys -t 'target-pane:!#' "cd \"$pane_cwd\"" Enter
-  fi
-}
-
-# PROMPT_COMMANDに上記関数を追加
-# コマンド実行後（プロンプトが表示される前）にこの関数が実行されるようにする
-export PROMPT_COMMAND="update_tmux_cwd; $PROMPT_COMMAND"
