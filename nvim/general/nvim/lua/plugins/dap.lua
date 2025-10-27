@@ -8,7 +8,7 @@ return {
 		local dap = require("dap")
 		local dapui = require("dapui")
 		dapui.setup()
-		dap.adapters.codellb = {
+		dap.adapters.codelldb = {
 			type = "executable",
 			command = "codelldb",
 			name = "lldb",
