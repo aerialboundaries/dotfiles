@@ -219,3 +219,13 @@ export NVM_DIR="$HOME/.nvm"
 # --------------------
 export "GEMINI_API_KEY=AIzaSyAeIhzIHwQbNnHNGGSvcIVk5a157cpWO_o"
 # --------------------
+
+# ------------------
+# Truecolor
+# ------------------
+export COLORTERM=truecolor
+
+# ------------------
+# Midnight Commander Solarized
+export MC_SKIN=/home/masato/.config/mc/skins/solarized-dark-truecolor.ini
+# --------------------
