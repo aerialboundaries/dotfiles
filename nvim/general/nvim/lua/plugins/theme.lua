@@ -6,7 +6,7 @@ return {
 		priority = 1000,
 		opts = {
 			theme = "dark",
-			transparent = { enabled = false }, -- ✅ 修正
+			transparent = { enabled = true }, -- ✅ 修正
 			styles = {
 				comments = { italic = true },
 				keywords = { italic = true },

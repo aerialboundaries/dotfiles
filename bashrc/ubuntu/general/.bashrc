@@ -227,5 +227,5 @@ export COLORTERM=truecolor
 
 # ------------------
 # Midnight Commander Solarized
-export MC_SKIN=/home/masato/.config/mc/skins/solarized-dark-truecolor.ini
+# export MC_SKIN=/home/masato/.config/mc/skins/solarized-dark-truecolor.ini
 # --------------------
