@@ -11,3 +11,6 @@ require("config.autocmds")
 -- 📦 lazy.nvim 初期化
 -- ===========================
 require("config.lazy")
+
+-- C言語のコメントの色を白に設定
+vim.cmd([[highlight Comment ctermfg=White guifg=#808080]])
