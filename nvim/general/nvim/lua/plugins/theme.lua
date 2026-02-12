@@ -8,8 +8,8 @@ return {
 			theme = "dark",
 			transparent = { enabled = true }, -- ✅ 修正
 			styles = {
-				comments = { italic = true },
-				keywords = { italic = true },
+				comments = { fg = "#839496", italic = false },
+				keywords = { italic = false },
 				functions = { bold = true },
 			},
 		},
@@ -26,7 +26,7 @@ return {
 		priority = 900,
 		config = function()
 			require("gruvbox").setup({ contrast = "soft" })
-			vim.cmd("colorscheme gruvbox")
+			--			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 }
