@@ -11,6 +11,8 @@ return {
 				comments = { fg = "#839496", italic = false },
 				keywords = { italic = false },
 				functions = { bold = true },
+				parameters = { italic = false },
+				variables = { italic = false },
 			},
 		},
 		config = function(_, opts)
