@@ -206,6 +206,7 @@ eval "$(zoxide init bash)"
 # ------------------------
 # fzf
 # ------------------------
+shellcheck source=/home/masato/.fzf.bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ----------------------------------------------------
@@ -231,3 +232,9 @@ export MC_SKIN=/home/masato/.config/mc/skins/solarized-dark-truecolor.ini
 # --------------------
 export EDITOR=nvim
 export VISUAL=nvim
+
+# ------------------
+# gcc options
+# ------------------
+# C言語学習・開発用のエイリアス
+alias ccg='gcc -g -Wall -Wextra -Wpedantic -std=c11'
