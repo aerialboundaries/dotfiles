@@ -238,3 +238,6 @@ export VISUAL=nvim
 # ------------------
 # C言語学習・開発用のエイリアス
 alias ccg='gcc -g -Wall -Wextra -Wpedantic -std=c11'
+
+# gdb option 
+export DEBUGINFOD_URLS="https://debuginfod.ubuntu.com"
