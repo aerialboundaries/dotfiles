@@ -156,7 +156,7 @@ stty stop undef
 PATH=$PATH:${HOME}/bin/scripts
 
 # dircolors設定の読み込み
-eval $(dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark)
+eval $(dircolors ~/etc/dotfiles/dircolors-solarized/dircolors.ansi-dark)
 
 # VcXsrv setting
 export DISPLAY=:0.0
