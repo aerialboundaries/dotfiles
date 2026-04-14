@@ -241,3 +241,9 @@ alias ccg='gcc -g -Wall -Wextra -Wpedantic -std=c11'
 
 # gdb option
 export DEBUGINFOD_URLS="https://debuginfod.ubuntu.com"
+. "$HOME/.cargo/env"
+
+# -----------------
+# yazi
+# -----------------
+export PATH="$HOME/.cargo/bin:$PATH"
