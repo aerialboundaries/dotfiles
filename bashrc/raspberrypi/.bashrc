@@ -156,7 +156,7 @@ stty stop undef
 PATH=$PATH:${HOME}/bin/scripts
 
 # dircolors設定の読み込み
-eval $(dircolors ~/etc/dotfiles/dircolors-solarized/dircolors.ansi-dark)
+eval $(dircolors ~/etc/dircolors-solarized/dircolors.ansi-dark)
 
 # VcXsrv setting
 export DISPLAY=:0.0
@@ -208,7 +208,9 @@ eval "$(zoxide init bash)"
 # ------------------------
 #shellcheck source=/home/masato/.fzf.bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+# fzfのキーバインドと補完を有効にする
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
 # ----------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
@@ -241,3 +243,15 @@ alias ccg='gcc -g -Wall -Wextra -Wpedantic -std=c11'
 
 # gdb option
 export DEBUGINFOD_URLS="https://debuginfod.ubuntu.com"
+. "$HOME/.cargo/env"
+
+# ------------------
+# yazi
+# ------------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
