@@ -39,4 +39,5 @@ vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-d>", "<BS>", { noremap = true, silent = true })
 
 -- インサートモードを抜けるための代替（Escが遠い場合）
-vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
+-- jの入力で待ち時間が発生するので無効化している
+-- vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
