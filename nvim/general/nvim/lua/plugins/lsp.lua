@@ -194,6 +194,16 @@ return {
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
+				--[]-- ✨ ここに ltex を追加します
+				ltex = {
+					filetypes = { "markdown", "text", "c", "cpp" }, -- C言語も対象に含める
+					settings = {
+						ltex = {
+							language = "en-US",
+							-- 必要に応じて、辞書や無視するルールをここに追加できます
+						},
+					},
+				},
 
 				lua_ls = {
 					-- cmd = { ... },
