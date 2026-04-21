@@ -9,4 +9,4 @@ vim.opt_local.spell = false
 vim.opt_local.spelllang = { "en_us" }
 
 -- 改行の挙動を調整（t: textwidthでの自動改行、c: コメント内での自動改行）
-vim.opt_local.formatoptions = "tcq"
+vim.opt_local.formatoptions = "tcqjn"
