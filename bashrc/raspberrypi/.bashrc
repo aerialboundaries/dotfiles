@@ -220,7 +220,10 @@ export NVM_DIR="$HOME/.nvm"
 # -------------------
 # Gemini API
 # --------------------
-export "GEMINI_API_KEY=AIzaSyAeIhzIHwQbNnHNGGSvcIVk5a157cpWO_o"
+# gemini-api.txt が存在する場合のみ読み込む設定
+if [ -f "$HOME/gemini-api.txt" ]; then
+    export GEMINI_API_KEY=$(cat "$HOME/gemini-api.txt")
+fi
 # --------------------
 
 # ------------------
