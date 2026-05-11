@@ -1,5 +1,6 @@
 -- 80文字で自動改行（ハードラップ）を有効にする
 vim.opt_local.textwidth = 80
+vim.opt.formatoptions:append("t")
 
 -- スペルチェックを有効にする
 -- ltex-lsを使うので無効にする
