@@ -17,3 +17,11 @@ vim.opt.spell = false
 vim.opt.updatetime = 300 -- 変更を検知するまでの待機時間（ミリ秒）
 -- vim.opt.relativenumber = true -- 相対行番号を有効化
 -- vim.opt.number = true      -- カーソル行のみ絶対行番号を表示するために残す
+-- 文字コードの設定
+-- 文字コードをUTF-8にする
+
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+
+-- 記号（○や●など）を全角幅として扱う
+vim.opt.ambiwidth = "double"
