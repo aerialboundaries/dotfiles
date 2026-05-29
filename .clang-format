@@ -1,0 +1,17 @@
+# .clang-format の内容
+BasedOnStyle: LLVM
+IndentWidth: 2
+ColumnLimit: 80
+AllowShortFunctionsOnASingleLine: None
+
+# ポインタの * を変数名側に付ける設定 (int *p;)
+# 教科書のスタイルに合わせるならこれです
+PointerAlignment: Right
+
+# 波括弧の前で改行するかどうか（Linuxスタイルに近い設定）
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: false
+  AfterStruct: false
+  AfterEnum: false
