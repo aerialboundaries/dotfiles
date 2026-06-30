@@ -25,7 +25,6 @@ vim.diagnostic.config({
 	severity_sort = true, -- エラーを優先的に表示
 })
 
-
 -- カーソルを保持したときに浮遊ウィンドウ（ポップアップ）を表示する設定
 vim.api.nvim_create_autocmd("CursorHold", {
 	callback = function()
@@ -39,7 +38,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 			prefix = " ",
 
 			scope = "cursor",
-
 		}
 
 		vim.diagnostic.open_float(nil, opts)
@@ -49,3 +47,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- ポップアップが出るまでの時間（ミリ秒）デフォルトは4000msなので短くするのがおすすめ
 
 vim.o.updatetime = 300
+
+-- fold codes
+vim.wo.foldmethod = "indent"
+vim.wo.foldlevel = 99
