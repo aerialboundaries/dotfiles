@@ -222,7 +222,7 @@ export NVM_DIR="$HOME/.nvm"
 # --------------------
 # gemini-api.txt が存在する場合のみ読み込む設定
 if [ -f "$HOME/gemini-api.txt" ]; then
-    export GEMINI_API_KEY=$(cat "$HOME/gemini-api.txt")
+  export GEMINI_API_KEY=$(cat "$HOME/gemini-api.txt")
 fi
 # --------------------
 
@@ -260,3 +260,8 @@ function y() {
   [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+
+# WSL起動時に自動でtmuxに接続（セッションがなければ自動復元して接続）
+if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+  tmux attach-session -t default 2>/dev/null || tmux new-session -s default
+fi
