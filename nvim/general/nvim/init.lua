@@ -51,3 +51,6 @@ vim.o.updatetime = 300
 -- fold codes
 vim.wo.foldmethod = "indent"
 vim.wo.foldlevel = 99
+
+-- blink cursor
+-- vim.opt.guicursor = "n-v-c:block-blinkon1,i-ci-ve:ver25-blinkon1,r-cr:hor20,o:hor50"
