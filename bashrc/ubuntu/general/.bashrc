@@ -260,8 +260,3 @@ function y() {
   [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
-
-# WSL起動時に自動でtmuxに接続（セッションがなければ自動復元して接続）
-if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-  tmux attach-session -t default 2>/dev/null || tmux new-session -s default
-fi
