@@ -1,0 +1,25 @@
+return {
+	"robitx/gp.nvim",
+	config = function()
+		local conf = {
+			providers = {
+				googleai = {
+					endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{gemini-3.1-flash-lite}:streamGenerateContent?key={{secret}}",
+					secret = os.getenv("GEMINI_API_KEY"),
+				},
+			},
+			agents = {
+				{
+					name = "Gemini",
+					chat = true,
+					command = true,
+					provider = "googleai",
+
+					model = { model = "gemini-3.1-flash-lite" },
+					system_prompt = "You are a helpful AI coding assistant.",
+				},
+			},
+		}
+		require("gp").setup(conf)
+	end,
+}
