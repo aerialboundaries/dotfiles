@@ -22,6 +22,15 @@ return {
 					system_prompt = "You are a helpful AI coding assistant.",
 				},
 			},
+			-- ここにカスタムフックとキーマップを追加
+			hooks = {
+				Explain = function(gp, params)
+					local template =
+						"以下のコードを日本語で詳しく解説してください。\n\n```{{filetype}}\n{{selection}}\n```"
+					local agent = gp.get_command_agent()
+					gp.Prompt(params, gp.Target.popup, agent, template)
+				end,
+			},
 		}
 		require("gp").setup(conf)
 	end,

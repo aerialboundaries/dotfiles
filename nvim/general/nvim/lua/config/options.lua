@@ -23,5 +23,8 @@ vim.opt.number = true -- カーソル行のみ絶対行番号を表示するた�
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
--- 記号（○や●など）を全角幅として扱う
-vim.opt.ambiwidth = "double"
+-- 記号（○や●など）を半角幅として扱う
+vim.opt.ambiwidth = "single"
+
+-- blink cursor on windows terminal
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
