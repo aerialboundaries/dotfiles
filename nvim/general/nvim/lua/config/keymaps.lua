@@ -40,3 +40,8 @@ vim.keymap.set("i", "<C-d>", "<BS>", { noremap = true, silent = true })
 
 -- インサートモードを抜けるための代替（Escが遠い場合）
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
+
+-- gp neovim
+vim.keymap.set({ "n", "v" }, "<C-g>c", "<cmd>GpChatNew<cr>", { desc = "New Chat" })
+vim.keymap.set({ "n", "v" }, "<C-g>r", "<cmd>GpRewrite<cr>", { desc = "Rewrite" })
+vim.keymap.set({ "n", "v" }, "<C-g>a", "<cmd>GpAppend<cr>", { desc = "Append" })
