@@ -9,6 +9,9 @@ return {
 					secret = os.getenv("GEMINI_API_KEY"),
 				},
 			},
+			-- デフォルトで起動するエージェント名を指定します
+			default_command_agent = "Gemini",
+			default_chat_agent = "Gemini",
 			agents = {
 				{
 					name = "Gemini",
