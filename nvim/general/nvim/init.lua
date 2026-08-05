@@ -54,3 +54,9 @@ vim.wo.foldlevel = 99
 
 -- blink cursor
 -- vim.opt.guicursor = "n-v-c:block-blinkon1,i-ci-ve:ver25-blinkon1,r-cr:hor20,o:hor50"
+
+-- ウィンドウリサイズ時に自動で全分割ウィンドウを等幅にする
+vim.api.nvim_create_autocmd("VimResized", {
+	pattern = "*",
+	command = "wincmd =",
+})

@@ -1,39 +1,44 @@
+--@type LazySpec
 return {
 	"mikavilpas/yazi.nvim",
+	version = "*", -- use the latest stable version
 	event = "VeryLazy",
+	dependencies = {
+		{ "nvim-lua/plenary.nvim", lazy = true },
+	},
 	keys = {
-		-- \y で現在のファイルの場所を開いてYaziを起動する設定
+		-- 👇 in this section, choose your own keymappings!
 		{
-			"<leader>y",
+			"<leader>-",
+			mode = { "n", "v" },
 			"<cmd>Yazi<cr>",
 			desc = "Open yazi at the current file",
 		},
-		-- \cw で現在のワーキングディレクトリを対象にYaziを起動する設定
 		{
+			-- Open in the current working directory
 			"<leader>cw",
 			"<cmd>Yazi cwd<cr>",
-
-			desc = "Open yazi at the current working directory",
+			desc = "Open the file manager in nvim's working directory",
+		},
+		{
+			"<c-up>",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Resume the last yazi session",
 		},
 	},
+	--@type YaziConfig | {}
 	opts = {
-
-		-- Yaziを閉じるときに、最後に選択していたディレクトリにnvimのカレントディレクトリを同期させるか
-		-- (trueにすると、Yaziで移動した場所にnvimの作業ディレクトリが自動で切り替わります)
-		update_cwd = true,
-		-- winopts = {
-		--	treesitter = false,
-		-- },
-
-		-- 描画崩れを防ぐためのウィンドウ表示設定
-		-- floating_window_scaling_factor = 0.85,
-		-- yazi_floating_window_winblend = 0,
-
-		-- フローティングウィンドウの表示カスタマイズ（好みに応じて変更可能）
-		floating_window_styling = {
-			border = "rounded",
+		-- if you want to open yazi instead of netrw, see below for more info
+		open_for_directories = false,
+		keymaps = {
+			show_help = "<f1>",
 		},
-		-- ターミナル描画の競合を回避するオプション
-		-- set_keymappings_when_components_ready = true,
 	},
+	-- 👇 if you use `open_for_directories=true`, this is recommended
+	init = function()
+		-- mark netrw as loaded so it's not loaded at all.
+		--
+		-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+		vim.g.loaded_netrwPlugin = 1
+	end,
 }
