@@ -60,3 +60,21 @@ vim.api.nvim_create_autocmd("VimResized", {
 	pattern = "*",
 	command = "wincmd =",
 })
+
+-- 対応する括弧のハイライト色変更
+local set_hl = vim.api.nvim_set_hl
+
+local function set_custom_highlights()
+	set_hl(0, "MatchParen", {
+		fg = "#00FFFF",
+		bg = "NONE",
+		bold = true,
+	})
+end
+
+set_custom_highlights()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	callback = set_custom_highlights,
+})
