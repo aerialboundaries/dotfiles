@@ -25,13 +25,14 @@ vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help
 
 -- ========================================================
 -- インサートモードで HJKL の位置を使って移動する設定
+-- nvim-cmpの<c-l> <c-h>を優先するためにoffにしている
 -- Ctrl + h はバックスペースではなく「左移動」として機能させます
-vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-e>", "<End>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-e>", "<End>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
 
 -- もし Ctrl + h を移動に使った場合、バックスペースはどうするか？
 
@@ -39,7 +40,7 @@ vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-d>", "<BS>", { noremap = true, silent = true })
 
 -- インサートモードを抜けるための代替（Escが遠い場合）
-vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 
 -- gp neovim
 local function keymapOptions(desc)
