@@ -66,7 +66,7 @@ local set_hl = vim.api.nvim_set_hl
 
 local function set_custom_highlights()
 	set_hl(0, "MatchParen", {
-		fg = "#00FFFF",
+		fg = "#70D6FF",
 		bg = "NONE",
 		bold = true,
 	})
