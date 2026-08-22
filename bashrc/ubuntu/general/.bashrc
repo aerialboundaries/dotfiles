@@ -260,3 +260,4 @@ function y() {
   [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+source "$HOME/tools/emsdk/emsdk_env.sh" > /dev/null 2>&1
