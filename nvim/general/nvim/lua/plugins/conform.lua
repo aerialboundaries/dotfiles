@@ -36,7 +36,9 @@ return { -- Autoformat
 			sh = { "shfmt" },
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
-			--
+			-- Pythonのフォーマッター設定
+			-- インポート順序の整頓（ruff_organize_imports）を実行したあと、コード整形（ruff_format）を適用します
+			python = { "ruff_organize_imports", "ruff_format" },
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
 		},
