@@ -1,0 +1,44 @@
+[[mgr.prepend_keymap]]
+on  = [ "g", "a" ]
+run = "cd ~/SCMEX_Data/admin"
+desc = "Cd to ~/SCMEX_Data/admin"
+
+[[mgr.prepend_keymap]]
+on  = [ "g", "b" ]
+run = "cd ~/SCMEX_Data/Budget/"
+desc = "Cd to ~/SCMEX_Data/Budget"
+
+[[mgr.prepend_keymap]]
+on  = [ "g", "r" ]
+run = "cd ~/SCMEX_Data/presidential/共有ファイルの中の引継資料/富樫ファイル/労務関係"
+desc = "Cd to 労務関係"
+
+[[mgr.prepend_keymap]]
+on  = [ "g", "l" ]
+run = "cd /mnt/l/CONTABILIDAD_ESPECIAL"
+desc = "Cd to CONTABILIDAD_EXPECIAL"
+
+[[mgr.prepend_keymap]]
+# c a キーで選択ファイルをzip圧縮します
+on = [ "e", "c" ]
+run = "plugin ouch"
+desc = "選択ファイルを圧縮"
+
+# Copy yanked files to the system clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "yank", 'plugin clipboard -- --action=copy' ]
+desc = "Yank selected files (copy)"
+
+# Keep behaviour consistent with cut
+[[mgr.prepend_keymap]]
+on  = "x"
+run = [ "yank --cut", 'plugin clipboard -- --action=copy' ]
+desc = "Yank selected files (cut)"
+
+# Paste files from the system clipboard into the current directory
+[[mgr.prepend_keymap]]
+
+on  = "<C-p>"
+run = [ 'plugin clipboard -- --action=paste' ]
+desc = "Paste yanked system clipboard files"

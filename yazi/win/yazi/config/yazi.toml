@@ -1,0 +1,20 @@
+# [open]
+# prepend_rules = [
+#   { mime = "*", use = "open" }
+# ]
+
+[opener]
+edit = [
+	{ run = 'nvim "%s"', block = true, for = "windows", desc = "Neovim" },
+	{ run = 'code "%s"', orphan = true, for = "windows", desc = "VS Code" },
+]
+excel = [
+	{ run = 'start excel %s', orphan = true, for = "windows", desc = "Excel" },
+]
+
+[open]
+prepend_rules = [
+	{ url = "*.csv", use = "excel" },
+	{ mime = "text/csv", use = "excel" },
+	{ mime = "text/*", use = ["edit"] },
+]

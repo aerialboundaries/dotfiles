@@ -1,0 +1,52 @@
+[[mgr.prepend_keymap]]
+on = [ "g", "a" ]
+run = "cd ~/Desktop/SCMEX_Data/admin"
+desc = "Cd to admin"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "b" ]
+run = "cd ~/Desktop/SCMEX_Data/Budget"
+desc = "Cd to Budget"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "s" ]
+run = "cd ~/Desktop/SCMEX_Data"
+desc = "Cd to SCMEX_Data"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "r" ]
+run = "cd ~/Desktop/SCMEX_Data/presidential/共有ファイルの中の引継資料/富樫ファイル/労務関係"
+desc = "Cd to 労務関係"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "l" ]
+run = "cd L:CONTABILIDAD_ESPECIAL"
+desc = "Cd to CONTABILIDAD_ESPECIAL"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "m" ]
+run = "cd M:"
+desc = "Cd to Network M"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "c" ]
+run = "cd C:/Users/mtakatani/AppData/Roaming/yazi/config"
+desc = "Cd to config"
+
+# Copy yanked files to the system clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "yank", 'my_plugin clipboard -- --action=copy' ]
+desc = "Yank selected files (copy)"
+
+# Keep behaviour consistent with cut
+[[mgr.prepend_keymap]]
+on  = "x"
+run = [ "yank --cut", 'my_plugin clipboard -- --action=copy' ]
+desc = "Yank selected files (cut)"
+
+# Paste files from the system clipboard into the current directory
+[[mgr.prepend_keymap]]
+on  = "<C-p>"
+run = [ 'plugin my_clipboard -- --action=paste' ]
+desc = "Paste yanked system clipboard files"

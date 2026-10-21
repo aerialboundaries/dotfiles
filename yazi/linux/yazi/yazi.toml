@@ -1,0 +1,13 @@
+[preview]
+# 補間フィルターを高精度な nearest または lanczos に設定
+image_filter = "lanczos"
+
+# 画像品質を最高レベルに上げる (1〜100)
+image_quality = 90
+
+# リサイズ時の最大解像度設定を広げる
+max_width = 1920
+max_height = 1080
+
+# Sixelプロトコルの明示
+image_protocol = "sixel"
