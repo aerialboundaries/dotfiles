@@ -149,3 +149,34 @@ end, { desc = "DAP Toggle Breakpoint" })
 vim.keymap.set("n", "<leader>ui", function()
 	require("dapui").toggle()
 end, { desc = "DAP UI Toggle" })
+
+vim.keymap.set("n", "<leader>B", function()
+	require("dap").set_breakpoint(vim.fn.input("Condition breakpoint: "))
+end, { desc = "DAP Set Conditional Breakpoint" })
+
+vim.keymap.set("n", "<leader>lp", function()
+	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, { desc = "DAP Set Log Point" })
+
+-- カーソル下の変数を評価（ポップアップ表示）
+vim.keymap.set({ "n", "v" }, "<leader>dh", function()
+	require("dap.ui.widgets").hover()
+end, { desc = "DAP Hover Variable" })
+
+-- 変数のスコープなどをプレビュー
+vim.keymap.set("n", "<leader>dp", function()
+	require("dap.ui.widgets").preview()
+end, { desc = "DAP Preview" })
+
+vim.keymap.set("n", "<leader>dr", function()
+	require("dap").restart()
+end, { desc = "DAP Restart" })
+
+vim.keymap.set("n", "<leader>dq", function()
+	require("dap").terminate()
+	require("dapui").close()
+end, { desc = "DAP Quit / Terminate" })
+
+vim.keymap.set("n", "<leader>de", function()
+	require("dap").run_to_cursor()
+end, { desc = "DAP Run to Cursor" })
