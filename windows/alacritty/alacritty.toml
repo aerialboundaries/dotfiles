@@ -1,0 +1,32 @@
+[general]
+# 設定ファイル変更時にオートリロード
+live_config_reload = true
+
+import = [
+    "C:/Users/mtakatani/AppData/Roaming/alacritty/themes/themes/solarized_dark.toml"
+]
+
+[terminal]
+
+# WSLのubuntuを使う
+[terminal.shell]
+program = "wsl"
+args = ["cd ~ && exec bash"]
+
+[font]
+size = 11.0
+
+normal = { family = "PlemolJP Console NF", style="Regular" }
+
+[cursor]
+style = { shape = "Block", blinking = "Always"}
+blink_timeout = 0
+
+[window]
+decorations = "Full"
+padding = { x = 10, y = 10 }
+opacity = 1 
+
+[env]
+term = "xterm-256color"
+

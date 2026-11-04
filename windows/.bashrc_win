@@ -1,0 +1,115 @@
+# .bashrc for gitbash
+#
+# 文字化け対策（ロケールを UTF-8 に固定）
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+
+# Scoop の shim パスを最優先に設定 (Git Bash 付属の古いツールより優先)
+export PATH="$HOME/scoop/shims:$PATH"
+
+# ====================================================
+# Git Bash Optimized .bashrc
+# ====================================================
+
+# 非対話シェル（スクリプト実行時等）は処理を終了
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# ----------------------------------------------------
+# 履歴設定 (History)
+# ----------------------------------------------------
+HISTCONTROL=ignoreboth
+export HISTSIZE=100000
+export HISTFILESIZE=409600
+export HISTIGNORE="pwd:id:uptime:resize:ls:clear:history"
+
+# ウィンドウサイズ自動更新
+shopt -s checkwinsize
+
+# ----------------------------------------------------
+# エイリアス (Aliases)
+# ----------------------------------------------------
+# カラー表示対応
+alias ls='ls -CF --color=auto'
+alias la='ls -aF --color=auto'
+alias ll='ls -alF --color=auto'
+alias grep='grep --color=auto'
+
+# 安全・確認系
+alias cp='cp -vip'
+alias mv='mv -vi'
+alias rm='rm -vi'
+
+# 便利系 (Windows連携)
+alias open='explorer'
+alias jupyter-lab='nohup jupyter-lab >> jupyter.log 2>&1 &'
+
+# 外部エイリアスファイルの読み込み
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# dircolors の読み込み設定
+if [ -f ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+fi
+
+# ----------------------------------------------------
+# fzf 設定
+# ----------------------------------------------------
+eval "$(fzf --bash)"
+export FZF_DEFAULT_OPTS='--no-height --bind=ctrl-z:ignore'
+
+# ----------------------------------------------------
+# yazi 設定
+# ----------------------------------------------------
+function y() {
+local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+command yazi "$@" --cwd-file="$tmp"
+IFS= read -r -d '' cwd < "$tmp"
+[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+command rm -f -- "$tmp"
+}
+
+# ----------------------------------------------------
+# Git プロンプト統合設定
+# ----------------------------------------------------
+if [ -f /etc/profile.d/git-prompt.sh ]; then
+  . /etc/profile.d/git-prompt.sh
+fi
+
+export GIT_PS1_SHOWDIRTYSTATE=true      # 変更(+)や未ステージング(*)を表示
+export GIT_PS1_SHOWUNTRACKEDFILES=true # 未追跡ファイル(%)を表示
+export GIT_PS1_SHOWUPSTREAM="auto"      # リモートとの差分(</>/\=)を表示
+
+# PROMPT_COMMAND に直接 __git_ps1 を指定
+PROMPT_COMMAND='__git_ps1 "\[\033[0;33m\]\u@\h\[\033[00m\]:\[\033[0;34m\]\w" "\[\033[0m\]\n$ " " \[\033[36m\](%s)\[\033[0m\]"'
+
+# ----------------------------------------------------
+# zoxide (z) 設定 (※ 必ず PROMPT_COMMAND 設定の直下に配置)
+# ----------------------------------------------------
+# # zoxide の初期化を高速化（キャッシュの利用）
+if command -v zoxide &> /dev/null; then
+    _zoxide_cache="$HOME/.zoxide.bash"
+    # キャッシュが存在しない、または zoxide 本体より古い場合に再生成
+    if [ ! -f "$_zoxide_cache" ] || [ "$(command -v zoxide)" -nt "$_zoxide_cache" ]; then
+        zoxide init bash > "$_zoxide_cache"
+    fi
+    source "$_zoxide_cache"
+fi
+eval "$(zoxide init bash)"
+
+# Git Bash用の確実な自動登録フック（自作オーバーライド）
+_zoxide_hook() {
+    if [ -n "${PWD}" ]; then
+        # /c/Users/... を C:/Users/... に変換して zoxide add に渡す
+        zoxide add "$(cygpath -m "$PWD")" 2>/dev/null
+    fi
+}
+
+# プロンプト表示時に毎回上記のフックを実行させる
+if [[ ! " ${PROMPT_COMMAND[*]} " =~ " _zoxide_hook " ]]; then
+    PROMPT_COMMAND="_zoxide_hook;${PROMPT_COMMAND}"
+fi
