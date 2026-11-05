@@ -3,7 +3,7 @@
 live_config_reload = true
 
 import = [
-    "C:/Users/mtakatani/AppData/Roaming/alacritty/themes/themes/solarized_dark.toml"
+    "themes/themes/solarized_dark.toml"
 ]
 
 [terminal]
@@ -27,6 +27,6 @@ decorations = "Full"
 padding = { x = 10, y = 10 }
 opacity = 1 
 
-[env]
-term = "xterm-256color"
+# [env]
+# term = "xterm-256color"
 
