@@ -1,31 +1,15 @@
-# [open]
-# prepend_rules = [
-#   { mime = "*", use = "open" }
-# ]
-
 [opener]
-# Windowsの standard start コマンドを定義
 win_start = [
-    { run = 'start "" "%s"', orphan = true, desc = "Open with default app (Windows)" }
+    { run = '''powershell -Command "Start-Process -FilePath '%s'"''', orphan = true, desc = "Open with PowerShell Start-Process", for = "windows" }
 ]
 
 edit = [
-	{ run = 'nvim "%s"', block = true, for = "windows", desc = "Neovim" },
-	{ run = 'code "%s"', orphan = true, for = "windows", desc = "VS Code" },
-]
-excel = [
-	{ run = 'start excel %s', orphan = true, for = "windows", desc = "Excel" },
+    { run = 'nvim "%s"', block = true, for = "windows", desc = "Neovim" },
+    { run = 'code "%s"', orphan = true, for = "windows", desc = "VS Code" },
 ]
 
 [open]
-# すべてのファイル（またはフォールバック）に対して win_start を適用
-# prepend_rules = [
-#    { mime = "*", use = ["win_start"] }
-# ]
-
 prepend_rules = [
-	{ url = "*.csv", use = "excel" },
-	{ mime = "text/csv", use = "excel" },
-	{ mime = "text/*", use = ["edit"] },
-	{ mime = "*", use = ["win_start"] }
+    { mime = "text/*", use = ["edit"] },
+    { mime = "*", use = ["win_start"] }
 ]
