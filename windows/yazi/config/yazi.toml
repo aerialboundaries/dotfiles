@@ -10,6 +10,7 @@ edit = [
 
 [open]
 prepend_rules = [
+    { mime = "text/csv", use = ["win_start"] },
     { mime = "text/*", use = ["edit"] },
     { mime = "*", use = ["win_start"] }
 ]
