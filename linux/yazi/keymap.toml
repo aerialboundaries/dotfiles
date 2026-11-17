@@ -1,24 +1,4 @@
 [[mgr.prepend_keymap]]
-on  = [ "g", "a" ]
-run = "cd ~/SCMEX_Data/admin"
-desc = "Cd to ~/SCMEX_Data/admin"
-
-[[mgr.prepend_keymap]]
-on  = [ "g", "b" ]
-run = "cd ~/SCMEX_Data/Budget/"
-desc = "Cd to ~/SCMEX_Data/Budget"
-
-[[mgr.prepend_keymap]]
-on  = [ "g", "r" ]
-run = "cd ~/SCMEX_Data/presidential/共有ファイルの中の引継資料/富樫ファイル/労務関係"
-desc = "Cd to 労務関係"
-
-[[mgr.prepend_keymap]]
-on  = [ "g", "l" ]
-run = "cd /mnt/l/CONTABILIDAD_ESPECIAL"
-desc = "Cd to CONTABILIDAD_EXPECIAL"
-
-[[mgr.prepend_keymap]]
 # c a キーで選択ファイルをzip圧縮します
 on = [ "e", "c" ]
 run = "plugin ouch"
