@@ -14,3 +14,7 @@ prepend_rules = [
     { mime = "text/*", use = ["edit"] },
     { mime = "*", use = ["win_start"] }
 ]
+
+[[plugin.prepend_previewers]]
+mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
+run  = "ouch"

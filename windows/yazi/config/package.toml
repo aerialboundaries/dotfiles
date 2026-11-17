@@ -3,5 +3,10 @@ use = "XYenon/clipboard"
 rev = "b25ec96"
 hash = "a66c062e13a45660205fb2c4b0cf5790"
 
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "596b666"
+hash = "c2f4f4aca257dcceafa9e3b828dbf1c9"
+
 [flavor]
 deps = []

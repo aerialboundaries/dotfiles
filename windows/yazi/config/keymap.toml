@@ -50,3 +50,8 @@ desc = "Yank selected files (cut)"
 on  = "<C-p>"
 run = [ 'plugin my_clipboard -- --action=paste' ]
 desc = "Paste yanked system clipboard files"
+
+[[mgr.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"
