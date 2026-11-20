@@ -78,3 +78,21 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",
 	callback = set_custom_highlights,
 })
+
+-- OSC52を使ってyankしたものをwinに貼り付けられるように
+-- ~/.config/nvim/init.lua
+vim.opt.clipboard = "unnamedplus"
+
+if os.getenv("SSH_TTY") ~= nil or os.getenv("SSH_CONNECTION") ~= nil then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
