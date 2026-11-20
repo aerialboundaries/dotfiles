@@ -80,19 +80,29 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 -- OSC52を使ってyankしたものをwinに貼り付けられるように
--- ~/.config/nvim/init.lua
 vim.opt.clipboard = "unnamedplus"
 
 if os.getenv("SSH_TTY") ~= nil or os.getenv("SSH_CONNECTION") ~= nil then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-  }
+	local function osc52_copy(lines, _)
+		local text = table.concat(lines, "\n")
+		local b64 = vim.base64.encode(text)
+		local seq = "\027]52;c;" .. b64 .. "\007"
+		local term = vim.env.TERM or ""
+		if vim.env.TMUX ~= nil or term:match("^tmux") or term:match("^screen") then
+			seq = "\027Ptmux;\027" .. seq .. "\027\\"
+		end
+		vim.api.nvim_chan_send(vim.v.stderr, seq)
+	end
+
+	vim.g.clipboard = {
+		name = "OSC 52 tmux-safe",
+		copy = {
+			["+"] = osc52_copy,
+			["*"] = osc52_copy,
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
 end
