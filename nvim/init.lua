@@ -106,3 +106,36 @@ if os.getenv("SSH_TTY") ~= nil or os.getenv("SSH_CONNECTION") ~= nil then
 		},
 	}
 end
+
+-- スペルチェックのハイライトを赤い取り消し線にする
+local function set_spell_highlight()
+	-- SpellBad: 誤ったスペル（赤い取り消し線 ＋ 文字色も少し赤くする場合）
+	vim.api.nvim_set_hl(0, "SpellBad", {
+		strikethrough = true,
+		sp = "#ff4444", -- 取り消し線の色（赤）
+		fg = "#ff6b6b", -- 文字自体の色も赤くしたい場合（元の文字色のままならこの行を削除）
+	})
+
+	-- SpellCap: 大文字で始まるべき単語（オレンジ系の破線や取り消し線にする場合）
+	vim.api.nvim_set_hl(0, "SpellCap", {
+		undercurl = true,
+		sp = "#ffaa00",
+	})
+
+	-- SpellRare / SpellLocal: まれな単語・地域特有のスペル
+	vim.api.nvim_set_hl(0, "SpellRare", {
+		undercurl = true,
+		sp = "#55aaff",
+	})
+	vim.api.nvim_set_hl(0, "SpellLocal", {
+		undercurl = true,
+		sp = "#55ffaa",
+	})
+end
+
+-- 起動時とカラースキーム変更時の両方で適用
+set_spell_highlight()
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("CustomSpellHighlight", { clear = true }),
+	callback = set_spell_highlight,
+})
