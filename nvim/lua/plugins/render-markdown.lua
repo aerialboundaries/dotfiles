@@ -6,7 +6,7 @@ return {
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
 	opts = {
-		heading = { sign = false },
+		heading = { sign = false, icons = {} },
 		code = { sign = false },
 	},
 }
