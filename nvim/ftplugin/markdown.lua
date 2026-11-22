@@ -4,7 +4,7 @@
 
 -- 1. 折り返し（ハードラップ）設定
 -- 80文字で折り返しつつ、テーブル行やコードブロック・長いリンクは自動改行で壊さない
-vim.opt_local.textwidth = 80
+-- vim.opt_local.textwidth = 80 テーブルがおかしくなるのではずす
 vim.opt_local.wrap = true
 vim.opt_local.linebreak = true -- 画面表示の折り返しも単語の途中で切らない
 
