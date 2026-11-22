@@ -25,7 +25,7 @@ local has_ltex = (#vim.lsp.get_clients({ bufnr = 0, name = "ltex" }) > 0)
 	or (#vim.lsp.get_clients({ bufnr = 0, name = "ltex_plus" }) > 0)
 
 vim.opt_local.spell = not has_ltex
-vim.opt_local.spelllang = { "en_us" }
+vim.opt_local.spelllang = { "en_us", "cjk" }
 
 -- 3. Markdown / 引継書向けの視認性・インデント調整
 vim.opt_local.tabstop = 2
