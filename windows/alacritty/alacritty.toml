@@ -27,6 +27,11 @@ decorations = "Full"
 padding = { x = 10, y = 10 }
 opacity = 1 
 
+[keyboard]
+bindings = [
+  { key = "F11", action = "ToggleFullscreen" },
+]
+
 # [env]
 # term = "xterm-256color"
 
