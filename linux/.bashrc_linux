@@ -261,3 +261,52 @@ function y() {
   rm -f -- "$tmp"
 }
 source "$HOME/tools/emsdk/emsdk_env.sh" >/dev/null 2>&1
+
+# ~/.bashrc に追記する CMake 補完関数
+_cmake_custom_complete() {
+  local cur prev
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD - 1]}"
+
+  local build_types="Debug Release RelWithDebInfo MinSizeRel"
+  local cmake_vars="-DCMAKE_BUILD_TYPE= -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=OFF -DCMAKE_C_COMPILER= -DCMAKE_CXX_COMPILER="
+  local cmake_opts="-S -B --build --target --parallel -j --fresh -G"
+
+  case "$cur" in
+  -DCMAKE_BUILD_TYPE=*)
+    local prefix="-DCMAKE_BUILD_TYPE="
+    local val="${cur#"$prefix"}"
+    COMPREPLY=($(compgen -W "$build_types" -- "$val"))
+    COMPREPLY=("${COMPREPLY[@]/#/$prefix}")
+    return 0
+    ;;
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=*)
+    local prefix="-DCMAKE_EXPORT_COMPILE_COMMANDS="
+    local val="${cur#"$prefix"}"
+    COMPREPLY=($(compgen -W "ON OFF" -- "$val"))
+    COMPREPLY=("${COMPREPLY[@]/#/$prefix}")
+    return 0
+    ;;
+  -D*)
+    COMPREPLY=($(compgen -W "$cmake_vars" -- "$cur"))
+    return 0
+    ;;
+  -*)
+    COMPREPLY=($(compgen -W "$cmake_opts $cmake_vars" -- "$cur"))
+    return 0
+    ;;
+  esac
+
+  # 前引数が -B や -S の場合はディレクトリ補完を返す
+  if [[ "$prev" == "-B" || "$prev" == "-S" ]]; then
+    COMPREPLY=($(compgen -d -- "$cur"))
+    return 0
+  fi
+
+  # それ以外はディレクトリ・ファイル補完
+  COMPREPLY=($(compgen -f -- "$cur"))
+  return 0
+}
+
+complete -o nospace -F _cmake_custom_complete cmake
