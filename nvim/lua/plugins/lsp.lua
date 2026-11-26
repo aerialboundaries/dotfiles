@@ -101,6 +101,8 @@ return {
 					cmd = { "/usr/bin/clangd" },
 				},
 				bashls = {},
+				neocmake = {},
+				autotools_ls = {},
 				-- gopls = {},
 				pyright = {},
 				-- rust_analyzer = {},
